@@ -7,13 +7,15 @@ const TodoPage = () => {
     const [status, setStatus] = useState('all'); // 'all', 'active', 'completed'
 
 
-
+    // handling inputs
     const inputDataHandler = (data) => {
         const tempInputData = [...allTodoData]
         tempInputData.push({ ...data })
         setAllTodoData(tempInputData);
     }
 
+
+    // getting index number
     const getIndex = (arr,rowItem) => {
         let index = -1;
         for(let i = 0; i<arr?.length;i++){
@@ -25,8 +27,10 @@ const TodoPage = () => {
         return index;
     }
 
+
+        // handling checkbox ,when clicked
     const checkBoxHandler = (e, rowItem) => {
-        console.log('e, rowItem :>> ', e, rowItem);
+        // console.log('e, rowItem :>> ', e, rowItem);
         if (e.target.checked) {
             rowItem.status = "Completed"
         }
@@ -49,6 +53,9 @@ const TodoPage = () => {
         setDisplayedTasks(tempAllTasks);
     }, [status, allTodoData])
 
+
+
+    // changing status 
     const changeFilterStatus = newStatus => {
         console.log('newStatus :>> ', newStatus);
         setStatus(newStatus)
